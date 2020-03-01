@@ -1,0 +1,527 @@
+body {
+    margin: 60px auto;
+    width: 100%;
+}
+nav ul, footer ul {
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    padding: 0px;
+    list-style: none;
+    font-weight: bold;
+}
+nav ul li, footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+	color: grey;
+	text-indent: 5%;
+}
+p {
+    font-size: 1.3em;
+    line-height: 1.4em;
+    color: white;
+	margin: 40px 40px 40px 40px;
+}
+footer {
+    border-top: 1px solid #d5d5d5;
+    font-size: .8em;
+}
+
+ul.posts { 
+    margin: 20px auto 40px; 
+    font-size: 1.5em;
+}
+
+ul.posts li {
+    list-style: none;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  padding: 10px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 50px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  
+  color: #0bccf8;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #0bccf8;
+  color: white;
+}
+
+.boxedleft {
+  
+  display:inline-block;
+  margin: 2% 0 0 5%;
+  height: 30%;
+  width: 100%;
+}
+.boxedright {
+
+  display:inline-block;
+  margin: 2% 0 0 60%;
+  height: 50%;
+  width: 40%;
+  
+}
+
+.boxedproject {
+	float: center;
+  display:inline-block;
+  text-align:center;
+  padding-top: 10%;
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: static;
+  opacity: 1;
+  background-attachment: fixed;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+.bgimg-1 {
+  background-image: url("images/ultimate1.png");
+  min-height: 100%;
+  background-position: right;
+  background-position: 45%;
+}
+
+.bgimg-2 {
+  background-image: url("images/robot2.png");
+  min-height: 100%;
+  background-position: left;
+  background-position: 5%;
+  background-size: 60%;
+}
+
+.bgimg-3 {
+  background-image: url("img_parallax3.jpg");
+  min-height: 400px;
+}
+
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+body, html {
+  height: 100%;
+  margin-top: 25px;
+  
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+
+span.block {
+  display: inline-block;
+  width: 250px;
+  height: 200px;
+	margin:0 auto;
+  padding:1% 1% 1% 1%;
+  border: 1px solid black;    
+  color: black;
+  background-color: white;
+  border-radius: 15px;
+}
+span a {
+    
+    color: black;
+    display: inline-block;
+    /* float:left;  remove */
+    margin: 1px 1px 0 0;
+    padding: 1px 1px
+}
+body {
+    margin: 60px auto;
+    width: 100%;
+}
+nav ul, footer ul {
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    padding: 0px;
+    list-style: none;
+    font-weight: bold;
+}
+nav ul li, footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+}
+h1 {
+    font-size: 3.5em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+	color: white;
+	text-indent: 5%;
+}
+p {
+    font-size: 1.3em;
+    line-height: 1.4em;
+    color: white;
+	margin: 40px 40px 40px 40px;
+}
+footer {
+    border-top: 1px solid #d5d5d5;
+    font-size: .8em;
+}
+
+ul.posts { 
+    margin: 20px auto 40px; 
+    font-size: 1.5em;
+}
+
+ul.posts li {
+    list-style: none;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  padding: 10px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: center;
+  color: grey;
+  text-align: center;
+  padding: 0px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  
+  color: blue;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #0bccf8;
+  color: white;
+}
+
+.boxedleft {
+  
+  display:inline-block;
+  margin: 2% 0 0 5%;
+  height: 50%;
+  width: 40%;
+}
+.boxedright {
+
+  display:inline-block;
+  margin: 5% 0 0 55%;
+  height: 50%;
+  width: 55%;
+  
+}
+
+.boxedproject {
+	float: center;
+  display:inline-block;
+  text-align:center;
+  padding-top: 10%;
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: static;
+  opacity: 1;
+  background-attachment: fixed;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+.bgimg-1 {
+  background-image: url("images/schoolbgg.png");
+  min-height: 100%;
+  width: 100%;
+  background-position: right;
+  background-position: 45%;
+}
+
+.bgimg-2 {
+  background-image: url("images/robot2.png");
+  background-color: white;
+  min-height: 100%;
+  background-position: left;
+  background-position: 2%;
+  background-size: 60%;
+}
+
+.bgimg-3 {
+  background-image: url("img_parallax3.jpg");
+  min-height: 400px;
+}
+
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+body, html {
+  height: 100%;
+  margin-top: 25px;
+  
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+
+span.block {
+  display: inline-block;
+  width: 250px;
+  height: 200px;
+	margin:0 auto;
+  padding:1% 1% 1% 1%;
+  border: 1px solid black;    
+  color: black;
+  background-color: white;
+  border-radius: 15px;
+}
+span a {
+    
+    color: black;
+    display: inline-block;
+    /* float:left;  remove */
+    margin: 1px 1px 0 0;
+    padding: 1px 1px
+}
+
+{box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: blue;
+  color: white;
+  padding: 17px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  top: 1%;
+  right: 28px;
+  width: 10%;
+  
+}
+
+
+
+.open-upload {
+  background-color: #555;
+  color: white;
+  padding: 17px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  top: 20%;
+  right: 2%;
+  width: 10%;
+  
+}
+
+.open-uploadcontrol {
+  background-color: #4CAF50;
+  border-radius: 10px;
+  color: white;
+  padding: 17px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  bottom: -60%;
+  left: 0%;
+  width: 80%;
+  
+}
+
+.form-upload {
+  display: none;
+  position: fixed;
+  top: 9%;
+  right: 1%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  border: 3px solid #f1f1f1;
+  z-index: 10000;
+}
+.open-adduser {
+  background-color: blue;
+  color: white;
+  padding: 17px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  top: 110%;
+  left: 2px;
+  width: 70%;
+  
+}
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  
+  padding: 15px;
+  width: 90%;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: blue;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+table {
+	margin: 10%;
+  
+  
+}
+tr:hover {background-color: #f5f5f5;}
+td, th{
+	
+    border-bottom: 1px solid #ddd;
+   max-width: 150px;
+    max-height: 150px;
+    overflow: hidden;
+	padding:1%;
+}
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  overflow-x: hidden;
+  padding-top: 0px;
+}
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  left: 40%;
+  transform: translate(-50%, 0);
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  width: 70%;
+  
+
+}
+
+time {
+    z-index: 900;
+}
+.grey-text{
+  color:grey;
+}

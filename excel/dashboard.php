@@ -1,0 +1,210 @@
+<?php
+    session_start();
+    include_once '../dbconnect.php';
+
+    $user = $_SESSION['loggedin'];
+    
+    if(isset($_POST['upload'])){
+        $txtname = $_POST['userfile'];
+        $txtGrade = $_POST['gradeLvl'];
+        $txtSection = $_POST['section'];
+
+        $qry = "INSERT INTO file(teacher,section,grade,filedir) values('$user','$txtSection', '$txtGrade', '$txtname')";
+
+        if(mysqli_query($db,$qry)){
+            echo "<script type='text/javascript'>alert('Teacher Action: Data is inserted');</script>";   
+        }
+        else{
+            echo "<script type='text/javascript'>alert('Failed to retrieve data');</script>";   
+        }
+        //echo "hello",$txtname;
+    // echo $txtGrade, $txtSection;
+
+    include_once "../Classes/PHPExcel.php";
+
+    $tmpfname = '../'.$txtname;
+        $excelReader = PHPExcel_IOFactory::createReaderForFile($tmpfname);
+     
+        $excelObj = $excelReader->load($tmpfname);
+       // $excelObj->setPreCalculateFormulas(true);
+        //$excelObj->save($tmpfname);
+        $worksheet = $excelObj->getSheet(0);
+        $lastRow = $worksheet->getHighestRow();
+
+        echo "<table>";
+        for ($row = 1; $row <= $lastRow; $row++) {
+                echo "<tr><td>";
+                echo $worksheet->getCell('A'.$row)->getValue();
+                echo "</td><td>";
+                echo $worksheet->getCell('B'.$row)->getValue();
+                echo "</td><td>";
+                echo $worksheet->getCell('C'.$row)->getValue();
+                echo "</td><tr>";
+                $as = $worksheet->getCell('C'.$lastRow)->getValue();
+                
+                echo $as;
+            }
+        echo "</table>";	
+    }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<nav style="margin-top:-2%" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/consolidated/excel/index.php">Consolidated App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome, <?php echo $_SESSION['loggedin']?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="edit.php">Edit Account</a>
+        <a class="dropdown-item" href="delete.php">Delete Account</a>
+          <a class="dropdown-item" href="logout.php">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div style="margin-top:5%;" class="container">
+    <div class="jumbotron">
+    <h1 style="color:black" class="display-4 text-center">Welcome to Cosolidated App</h1>
+    <p style="color:grey" class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p style="color:black" class="text-center">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <div class="text-center">
+    <button type="submit" class="btn btn-primary btn-lg ope-uploadcontrol" id="logi"onclick="openUpload()">Upload File</button>
+    </div>
+    </div>
+</div>
+
+
+
+
+<div style="margin-bottom:10%" class="container">
+
+</div>
+
+<div class="form-upload" id="myForm" style="display:none">
+			<form class="form-container" method="POST" action="dashboard.php">
+				<h2>Upload File</h2>
+
+				<label for="username"><b>Grade Level</b></label>
+				<select name="gradeLvl" id="username">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+				<br>
+				<label for=""><b>Section</b></label><br>
+				<input type="text" placeholder="" name="section" required>
+				<br>
+				<input type="hidden" name="MAX_FILE_SIZE"
+                               value="16000000">
+                        <input class="" name="userfile" type="file" id="userfile"><br>
+				<input name="upload" type="submit" class="btn" id="upload" value=" Upload ">
+				<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+			</form>
+		
+  		</div>
+
+
+<div class="container">
+    <h1 style="color:black" class="display-4 text-center">Consolidated App Statistics</h1>
+    <p class="grey-text text-center">These is overview of the Consolidated Application expressed through statistics</p>
+        <div style="margin-left: 30%;">
+            <div id="piechart"></div>
+        </div>
+    </div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+    
+    <script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Task', 'Hours per Day'],
+['Total Enrolled', 400],
+['Passed', 1],
+['Failed', 23],
+['Male', 40],
+['Female', 60],
+]);
+
+// Optional; add a title and set the width and height of the chart
+var options = {backgroundColor: 'transparent','title':'Students Status Report', 'width':550, 'height':400};
+
+// Display the chart inside the <div> element with id="piechart"
+var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+chart.draw(data, options);
+}
+</script>
+
+</div></div>
+      
+</div>	
+<!-- 
+<div class="footer bg-dark">
+    <div>
+        <a style="color:white" href="#footerlink">Copyright 2020</a>
+    </div>
+</div> -->
+
+  <style>
+.footer {
+   left: 0;
+   position: fixed;
+   padding:15px;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+}
+</style>  
+<script>
+			function openForm() {
+				window.location.replace("logout.php");
+				
+			}
+
+			function closeForm() {
+				document.getElementById("myForm").style.display = "none";
+				
+			}
+			
+			function openUpload() {
+				document.getElementById("myForm").style.display = "block";
+				//document.getElementById("login").style.display = "none";
+			}
+		</script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
