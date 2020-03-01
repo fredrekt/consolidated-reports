@@ -16,6 +16,9 @@ Project Starting Sequence
 - Sending of file to download for the teachers
 ~ Ending of Admin UI ~
 
+Testing
+- Refer to test.xlsx -> Demo for using PhpExcel
+- Pie Chart data displayed
 
 
 
