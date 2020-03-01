@@ -1,8 +1,21 @@
-Nielski,
+Discard all files except dbconnect.php file.
 
-Create a database named "php"
+- used for db connection
 
-Import sql file named "php"
+Project Starting Sequence
 
-Pwede ra na nimo i-rename after.
-pero subaya tanan nga naa'y in-ana nga database name.
+~ Starting of Teacher UI ~
+- run localhost/consolidated/excel/index.php 
+- login auth
+- upload excel file -> contains averages of subject status 
+~ Ending of Teacher UI ~
+
+~ Starting of Admin UI ~
+- run localhost/consolidated/admin/index.php 
+- Admin priviledges available: View, Send file to teacher, Delete
+- Sending of file to download for the teachers
+~ Ending of Admin UI ~
+
+
+
+
