@@ -12,7 +12,8 @@
             $email = $_POST['mail'];
             $school = $_POST['school'];
             $grade = $_POST['grade'];
-
+            //setting the session of logged in to teacher name
+            $lnme = $_SESSION['loggedin'];
             $qry = "UPDATE users SET password = '$pass',lastname='$lnme', firstname='$fnme', email='$email', school='$school', major='$grade' WHERE username='$user'";
             if(mysqli_query($db,$qry)){
                 echo "<script type='text/javascript'>alert('User has successfully updated information!');</script>";   
