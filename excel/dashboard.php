@@ -3,11 +3,31 @@
     include_once '../dbconnect.php';
 
     $user = $_SESSION['loggedin'];
+
+    //uploading the file into the server
+    if(isset($_POST['btnMove'])){
+        $filename = $_FILES['file']['name'];
+        $filetype = $_FILES['file']['type'];
+        $filesize = $_FILES['file']['size'];
+        $filetmploc = $_FILES['file']['tmp_name'];
+        $filedir = "../".$filename;
+
+        move_uploaded_file($filetmploc,$filedir);
+    }
     
     if(isset($_POST['upload'])){
         $txtname = $_POST['userfile'];
         $txtGrade = $_POST['gradeLvl'];
         $txtSection = $_POST['section'];
+        
+        //uploading the file to server
+        // $filename = $_FILES['userfile']['name'];
+        // $filetype = $_FILES['userfile']['type'];
+        // $filesize = $_FILES['userfile']['size'];
+        // $filetmploc = $_FILES['userfile']['tmp_name'];
+        // $filedir = "../".$filename;
+
+        // move_uploaded_file($filetmploc,$filedir);
 
         $qry = "INSERT INTO file(teacher,section,grade,filedir) values('$user','$txtSection', '$txtGrade', '$txtname')";
 
@@ -17,32 +37,6 @@
         else{
             echo "<script type='text/javascript'>alert('Failed to retrieve data');</script>";   
         }
-        //echo "hello",$txtname;
-    // echo $txtGrade, $txtSection;
-
-    // include_once "../Classes/PHPExcel.php";
-
-    // $tmpfname = '../'.$txtname;
-    //     $excelReader = PHPExcel_IOFactory::createReaderForFile($tmpfname);
-     
-    //     $excelObj = $excelReader->load($tmpfname);
-    //     $worksheet = $excelObj->getSheet(0);
-    //     $lastRow = $worksheet->getHighestRow();
-
-    //     echo "<table>";
-    //     for ($row = 1; $row <= $lastRow; $row++) {
-    //             echo "<tr><td>";
-    //             echo $worksheet->getCell('A'.$row)->getValue();
-    //             echo "</td><td>";
-    //             echo $worksheet->getCell('B'.$row)->getValue();
-    //             echo "</td><td>";
-    //             echo $worksheet->getCell('C'.$row)->getValue();
-    //             echo "</td><tr>";
-    //             $as = $worksheet->getCell('C'.$lastRow)->getValue();
-                
-    //             echo $as;
-    //         }
-    //     echo "</table>";	
     }
 
 ?>
@@ -82,11 +76,19 @@
 <div style="margin-top:5%;" class="container">
     <div class="jumbotron">
     <h1 style="color:black" class="display-4 text-center">Welcome to Cosolidated App</h1>
-    <p style="color:grey" class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p style="color:grey" class="lead text-center">The first thing you need to do is upload the file to your server, if the file already exists in the server: you can skip me</p>
+        <div class="container mt-4 mb-4 text-center">
+            <form action="dashboard.php" method="post" enctype="multipart/form-data">
+                <input class="" type="file" name="file"/>
+                <button class="btn btn-sm btn-primary" name="btnMove" type="submit">UPLOAD FILE TO SERVER</button>
+            </form>
+        </div> 
     <hr class="my-4">
-    <p style="color:black" class="text-center">It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <div class="text-center">
-    <button type="submit" class="btn btn-primary btn-lg ope-uploadcontrol" id="logi"onclick="openUpload()">Upload File</button>
+    <p class="grey-text">
+        Secondly, you need to select the file you just uploaded to your server
+    </p>
+    <button type="submit" class="btn btn-primary btn-md ope-uploadcontrol" id="logi"onclick="openUpload()">Choose file from server</button>
     </div>
     </div>
 </div>
