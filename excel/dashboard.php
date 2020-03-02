@@ -20,31 +20,29 @@
         //echo "hello",$txtname;
     // echo $txtGrade, $txtSection;
 
-    include_once "../Classes/PHPExcel.php";
+    // include_once "../Classes/PHPExcel.php";
 
-    $tmpfname = '../'.$txtname;
-        $excelReader = PHPExcel_IOFactory::createReaderForFile($tmpfname);
+    // $tmpfname = '../'.$txtname;
+    //     $excelReader = PHPExcel_IOFactory::createReaderForFile($tmpfname);
      
-        $excelObj = $excelReader->load($tmpfname);
-       // $excelObj->setPreCalculateFormulas(true);
-        //$excelObj->save($tmpfname);
-        $worksheet = $excelObj->getSheet(0);
-        $lastRow = $worksheet->getHighestRow();
+    //     $excelObj = $excelReader->load($tmpfname);
+    //     $worksheet = $excelObj->getSheet(0);
+    //     $lastRow = $worksheet->getHighestRow();
 
-        echo "<table>";
-        for ($row = 1; $row <= $lastRow; $row++) {
-                echo "<tr><td>";
-                echo $worksheet->getCell('A'.$row)->getValue();
-                echo "</td><td>";
-                echo $worksheet->getCell('B'.$row)->getValue();
-                echo "</td><td>";
-                echo $worksheet->getCell('C'.$row)->getValue();
-                echo "</td><tr>";
-                $as = $worksheet->getCell('C'.$lastRow)->getValue();
+    //     echo "<table>";
+    //     for ($row = 1; $row <= $lastRow; $row++) {
+    //             echo "<tr><td>";
+    //             echo $worksheet->getCell('A'.$row)->getValue();
+    //             echo "</td><td>";
+    //             echo $worksheet->getCell('B'.$row)->getValue();
+    //             echo "</td><td>";
+    //             echo $worksheet->getCell('C'.$row)->getValue();
+    //             echo "</td><tr>";
+    //             $as = $worksheet->getCell('C'.$lastRow)->getValue();
                 
-                echo $as;
-            }
-        echo "</table>";	
+    //             echo $as;
+    //         }
+    //     echo "</table>";	
     }
 
 ?>
@@ -133,11 +131,41 @@
 
 <div class="container">
     <h1 style="color:black" class="display-4 text-center">Consolidated App Statistics</h1>
-    <p class="grey-text text-center">These is overview of the Consolidated Application expressed through statistics</p>
+    <p class="grey-text text-center">These are the overview of the Consolidated Application expressed through statistics</p>
         <div style="margin-left: 30%;">
             <div id="piechart"></div>
         </div>
     </div>
+
+<?php
+    //displaying new updates from admin - file pushes
+    $qryDisplay = "select * from updates";
+    $execDisplay = mysqli_query($db,$qryDisplay);
+    
+    if (mysqli_num_rows($execDisplay) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($execDisplay)) {
+            $fileUpdateName = $row['filename'];
+        }
+    } else {
+        echo "<script type='text/javascript'>alert('Teacher Fetch: update push has failed');</script>";   
+    }
+?>
+
+<div class="container">
+    <h1 style="color:black" class="display-4 text-center">Application Updates</h1>
+    <hr style="width:50%"/>
+    <p class="grey-text text-center">The updates from the admin are shown below</p>
+    
+    <div style="margin-left:0" class="container">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> <a class="alert-link" href="../<?php echo $fileUpdateName?>" download>Click this link to begin downloading the file from the admin</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    </div>
+</div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
     
@@ -169,20 +197,20 @@ chart.draw(data, options);
 </div></div>
       
 </div>	
-<!-- 
+
 <div class="footer bg-dark">
     <div>
         <a style="color:white" href="#footerlink">Copyright 2020</a>
     </div>
-</div> -->
+</div>
 
   <style>
 .footer {
    left: 0;
-   position: fixed;
    padding:15px;
    bottom: 0;
    width: 100%;
+   margin-top:10%;
    color: white;
    text-align: center;
 }
