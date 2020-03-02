@@ -2,6 +2,15 @@
     session_start(); 
     include_once '../dbconnect.php';
 
+    //check session exists - loggedin user if true
+    if(isset($_SESSION['loggedin'])){
+        echo "<script type='text/javascript'>alert('User Session Still Exists');</script>";   
+        header("Location: dashboard.php");
+    }
+    else{
+        echo "<script type='text/javascript'>alert('User Session Expired');</script>";   
+    }
+
     if(isset($_POST['btnLogin'])){
         if(isset($_POST['username']) && $_POST['password']){
             $user=$_POST['username'];
@@ -14,6 +23,15 @@
             $query2="SELECT * FROM users where username='$user' and password='$pwd'";
             $verifyPass=mysqli_query($db, $query2) or die(mysqli_error($db));
             $result=mysqli_num_rows($verifyPass);
+
+            $ifteacher ="SELECT * FROM users where accounttype = 'Teacher' ";
+            $ifadmin = "SELECT * FROM users where accounttype = 'Admin' ";
+
+            $teacher = mysqli_query($db, $ifteacher);
+            $rteach = mysqli_num_rows($teacher);
+            $admin = mysqli_query($db,$ifadmin);
+            $radmin = mysqli_num_rows($admin);
+
 
             if($count>0 && $result>0){
                 $_SESSION['loggedin'] = $user;
@@ -28,11 +46,13 @@
     }
 
     if(isset($_POST['btnReg'])){
-        if(isset($_POST['reguser']) && isset($_POST['regpass']) && isset($_POST['regemail']) ){  
+        if(isset($_POST['reguser']) && isset($_POST['regpass']) && isset($_POST['regemail']) && isset($_POST['accountType']) ){  
             $usern = $_POST['reguser'];
             $pass = $_POST['regpass'];
             $email =$_POST['regemail'];
-            $qry = "INSERT INTO users(username, password, email) values ('$usern', '$pass', '$email')";
+            $atype = $_POST['accountType'];
+
+            $qry = "INSERT INTO users(username, password, email, accounttype) values ('$usern', '$pass', '$email', '$atype')";
             if(mysqli_query($db,$qry)){
                 echo "<script type='text/javascript'>alert('User has new registered');</script>";   
             }
@@ -111,7 +131,7 @@
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label class="form-check-label" for="exampleCheck1">Remember my password</label>
         </div>
         <button name="btnLogin" type="submit" class="btn btn-primary">Login</button>
         </form>
@@ -122,6 +142,15 @@
     <div style="padding:25px;" class="card">
     <h3 class="text-center">Sign Up</h3>
         <form method="POST" action="index.php">
+        <div class="form-group">
+            <label for="select">Select type of account</label>
+            <select name="accountType" class="browser-default custom-select">
+                <option selected>Choose an account type</option>
+                <option value="Admin">Admin</option>
+                <option value="Teacher">Teacher</option>
+            </select>
+        </div>
+        
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input name="regemail" 
