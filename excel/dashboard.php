@@ -4,6 +4,14 @@
 
     $user = $_SESSION['loggedin'];
 
+    if(isset($_SESSION['loggedin'])){
+        echo "<script type='text/javascript'>alert('Teacher Session Exists');</script>";   
+        //header("Location: dashboard.php");
+      }
+      else{
+        echo "<script type='text/javascript'>alert('Teacher Session Expired');</script>";   
+        header("Location: index.php");
+      }
     //uploading the file into the server
     if(isset($_POST['btnMove'])){
         $filename = $_FILES['file']['name'];
