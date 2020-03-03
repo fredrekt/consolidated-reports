@@ -60,13 +60,13 @@
      echo '<p class="grey-text text-center">below are the reports which teacher you used</p>';
      echo' <table class="table">';
       for ($row = 1; $row <= $lastRow; $row++) {
-              $a = $worksheet->getCell('A'.$row)->getValue();
-              $b = $worksheet->getCell('B'.$row)->getValue();
-              $c =  $worksheet->getCell('C'.$row)->getValue();
-              $d =  $worksheet->getCell('D'.$row)->getValue();
-              $e =  $worksheet->getCell('E'.$row)->getValue();
-              $f =  $worksheet->getCell('F'.$row)->getValue();
-              $h =  $worksheet->getCell('H'.$row)->getValue();
+              $a = $worksheet->getCell('A'.$row)->getCalculatedValue();
+              $b = $worksheet->getCell('B'.$row)->getCalculatedValue();
+              $c =  $worksheet->getCell('C'.$row)->getCalculatedValue();
+              $d =  $worksheet->getCell('D'.$row)->getCalculatedValue();
+              $e =  $worksheet->getCell('E'.$row)->getCalculatedValue();
+              $f =  $worksheet->getCell('F'.$row)->getCalculatedValue();
+              $h =  $worksheet->getCell('H'.$row)->getCalculatedValue();
 
               echo '<tr><td>';
               echo $a;
