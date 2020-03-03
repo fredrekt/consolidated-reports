@@ -32,7 +32,7 @@
     <title>Admin Side</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body style="backrgound-position:100px 200px;background-repeat:no-repeat;background-image:url('https://i.pinimg.com/736x/cb/dc/9b/cbdc9bf758a327b81d8c8a937f95fcf4.jpg')">
+<body style="background-position:800px 80px;background-repeat:no-repeat;background-image:url('https://i.pinimg.com/736x/cb/dc/9b/cbdc9bf758a327b81d8c8a937f95fcf4.jpg')">
     
 
 <nav class="navbar navbar-dark bg-dark">
