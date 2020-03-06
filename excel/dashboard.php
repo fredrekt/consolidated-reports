@@ -159,7 +159,7 @@
         </div>
 
     <div style="margin-top:-65%; font-weight:700" class="cotainer">
-        <h1 style="color:blackl;text-transform:uppercase;margin-left:10%" class="display-4 text-center"><b>Welcome to Cosolidated Monthly Report</b></h1>
+        <h1 style="color:blackl;text-transform:uppercase;margin-left:10%" class="display-4 text-center"><b>Welcome to Consolidated Monthly Report</b></h1>
     </div> 
  
 
