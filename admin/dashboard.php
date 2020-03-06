@@ -119,7 +119,7 @@
       echo "<td>$section</td>";
       echo "<td>$grade</td>";
       echo "<td>$timestmp</td>";
-      echo "<td><a class='btn btn-success btn-sm' href='retrieve.php?id=$id'>Retrieve</a></td>";
+      echo '<td><a class="btn btn-success btn-sm" href="retrieve.php?id='.$id.'"/>Retrieve</a></td>';
       echo '</tr>';
     }
     } else {
