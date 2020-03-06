@@ -186,7 +186,7 @@
 				<h2>Upload File</h2>
 
 				<label for="username"><b>Grade Level</b></label><br/>
-				<select name="gradeLvl" id="username">
+				<!-- <select name="gradeLvl" id="username">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -194,10 +194,11 @@
 					<option value="5">5</option>
 					<option value="6">6</option>
 					<option value="7">7</option>
-				</select>
+				</select> -->
+        <input type="text" name="gradeLvl"/>
 				<br>
 				<label for=""><b>Section</b></label><br>
-                <select class="mb-2" name="section">
+                <!-- <select class="mb-2" name="section">
                 <option value="Rose">Rose</option>
 					<option value="Orchid">Orchid</option>
 					<option value="Camia">Camia</option>
@@ -205,8 +206,8 @@
 					<option value="Daisy">Daisy</option>
                     <option value="Sunflower">Sunflower</option>
 					<option value="Special Science Class">Special Science Class</option>
-                </select>
-				<!-- <input type="text" placeholder="" name="section" required> -->
+                </select> -->
+				<input type="text" placeholder="" name="section" required>
 				<br>
 				<!-- <input type="hidden" name="MAX_FILE_SIZE"
                                value="16000000"> -->
