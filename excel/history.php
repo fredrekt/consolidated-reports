@@ -4,7 +4,7 @@
 
     if(isset($_SESSION['loggedin'])){
         $user = $_SESSION['loggedin'];
-        echo "<script type='text/javascript'>alert('User Session still exists!');</script>";   
+        // echo "<script type='text/javascript'>alert('User Session still exists!');</script>";   
     }
     else{
         header("Location: index.php");
@@ -56,13 +56,42 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="edit.php">Edit Account</a>
-        <a class="dropdown-item" href="delete.php">Delete Account</a>
+        <a class="dropdown-item" href="history.php">View Upload History</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete Account</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deletion of Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleting this account means that you wont be able to access this account again.
+        This Account will be deleted from our database.
+      </div>
+      <div class="modal-footer">
+      <a href="delete.php" class="btn btn-danger">Delete Account</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ends -->
+
+
+
     
     <div class="container">
     <?php
@@ -96,7 +125,8 @@
             echo "<table class='table'>";
             echo " <thead>
             <tr>";
-             echo' <th scope="col">#</th>
+             echo' 
+              <th scope="col">#</th>
               <th scope="col">Uploaded By</th>
               <th scope="col">Section</th>
               <th scope="col">Grade</th>
@@ -114,7 +144,11 @@
                 // $password = $row['password'];
                 // $school = $row['school'];
                 // $grade = $row['major'];
-                echo "<tr>
+                echo "<tr>";
+                //echo "<td>
+                //<input type='checkbox' name='chck'/>
+                //</td>";
+                echo "
                 <td>$id</td>
                 ";
 
@@ -136,6 +170,8 @@
             }
             echo "</table>";
             echo '<a href="clear.php?name='.$user.' style="color:white;" class="btn btn-sm btn-danger">clear history</a>';
+            //echo '<a href="clearmultiple.php?chck="$_GET[`chck`]" style="color:white;" class="btn btn-sm btn-danger ml-4">clear multiple</a>';
+
         }
         else{
             echo '<div class="alert alert-danger" role="alert">
@@ -149,17 +185,16 @@
 
 
     
-
+<!-- 
 <div class="footer bg-dark">
     <div>
         <a style="color:white" href="#footerlink">Copyright 2020</a>
     </div>
-</div>
+</div> -->
 
   <style>
 .footer {
    left: 0;
-   position:fixed;
    padding:15px;
    bottom: 0;
    width: 100%;

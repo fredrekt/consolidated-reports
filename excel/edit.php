@@ -49,13 +49,40 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="edit.php">Edit Account</a>
-        <a class="dropdown-item" href="delete.php">Delete Account</a>
+        <a class="dropdown-item" href="history.php">View Upload History</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete Account</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deletion of Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleting this account means that you wont be able to access this account again.
+        This Account will be deleted from our database.
+      </div>
+      <div class="modal-footer">
+      <a href="delete.php" class="btn btn-danger">Delete Account</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ends -->
     
     <div class="container">
     <?php

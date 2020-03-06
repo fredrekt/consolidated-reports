@@ -4,11 +4,11 @@
 
     //check session exists - loggedin user if true
     if(isset($_SESSION['loggedin'])){
-        echo "<script type='text/javascript'>alert('User Session Still Exists');</script>";   
+        // echo "<script type='text/javascript'>alert('User Session Still Exists');</script>";   
         header("Location: dashboard.php");
     }
     else{
-        echo "<script type='text/javascript'>alert('User Session Expired');</script>";   
+        // echo "<script type='text/javascript'>alert('User Session Expired');</script>";   
     }
 
     if(isset($_POST['btnLogin'])){
@@ -24,7 +24,7 @@
             $verifyPass=mysqli_query($db, $query2) or die(mysqli_error($db));
             $result=mysqli_num_rows($verifyPass);
 
-            $ifteacher ="SELECT * FROM users where accounttype = 'Teacher' ";
+            $ifteacher ="SELECT * FROM users where username='$user' and password='$pwd' and accounttype = 'Teacher' ";
             $ifadmin = "SELECT * FROM users where accounttype = 'Admin' ";
 
             $teacher = mysqli_query($db, $ifteacher);
@@ -33,10 +33,15 @@
             $radmin = mysqli_num_rows($admin);
 
 
-            if($count>0 && $result>0){
+            if($rteach>0){
                 $_SESSION['loggedin'] = $user;
                 echo "<script type='text/javascript'>alert('User has successfully logged in');</script>";   
                 header("Location: dashboard.php");
+            }
+            elseif($radmin>0){
+                $_SESSION['loggedinadmin'] = $user;
+                echo "<script type='text/javascript'>alert('Admin has successfully logged in');</script>";   
+                header("Location: ../admin/dashboard.php");
             }
             else{
                 echo "<script type='text/javascript'>alert('User has failed to logged in');</script>";   
@@ -73,9 +78,6 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
 <a class="navbar-brand" href="#">Consolidated App</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">

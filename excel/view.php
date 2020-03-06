@@ -47,45 +47,16 @@
       //displaying what the file reads (excel)
       $lastRow = $worksheet->getHighestRow();
      echo '<div class="container mt-5">';
-     echo '<h1 class="text-center">MONTHLY CONSOLIDATED REPORTS</h1>';
-     echo '<hr style="width:20%"/>';
-     echo '<p class="grey-text text-center">below are the reports which you uploaded</p>';
-     echo' <table class="table">';
-      for ($row = 1; $row <= $lastRow; $row++) {
-              $a = $worksheet->getCell('A'.$row)->getCalculatedValue();
-              $b = $worksheet->getCell('B'.$row)->getCalculatedValue();
-              $c =  $worksheet->getCell('C'.$row)->getCalculatedValue();
-              $d =  $worksheet->getCell('D'.$row)->getCalculatedValue();
-              $e =  $worksheet->getCell('E'.$row)->getCalculatedValue();
-              $f =  $worksheet->getCell('F'.$row)->getCalculatedValue();
-              $h =  $worksheet->getCell('H'.$row)->getCalculatedValue();
-
-              echo '<tr><td>';
-              echo $a;
-              echo '</td></td>';
-
-              echo '<td><td>';
-              echo $b;
-              echo '</td></td';
-
-              echo '<td><td>';
-              echo $c;
-              echo '</td></td';
-
-              echo '<td><td>';
-              echo $d;
-              echo '</td></td';
-
-              echo '<td><td>';
-              echo $e;
-              echo '</td></td';
-
-              echo '<td><td>';
-              echo $f;
-              echo '</td></tr>';
-      }
-    echo' </table>';
-    //echo "filename: ".$filename;
+    ?>
+    <h1 class="text-center">You are viewing file: <?php echo $filename?></h1>
+    <hr style="width:40%"/>
+    <p class="grey-text text-center">This is just a preview of the file you are looking at</p>
+    <iframe 
+    width="1000"
+    height="800"
+    src="http://localhost/consolidated/excel/viewertest.php?file=<?php echo $filename?>"></iframe>
+    <?php
+    echo "<br/>";
     echo "<a class='btn btn-primary' href='../$filename' download>download</a>";
     echo '</div>';
     }
