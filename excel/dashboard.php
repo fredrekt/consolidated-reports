@@ -99,7 +99,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="edit.php">Edit Account</a>
         <a class="dropdown-item" href="history.php">
-        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
         View Upload History</a>
         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete Account</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
