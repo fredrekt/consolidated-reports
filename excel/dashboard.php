@@ -98,7 +98,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="edit.php">Edit Account</a>
-        <a class="dropdown-item" href="history.php">View Upload History</a>
+        <a class="dropdown-item" href="history.php">
+        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+        View Upload History</a>
         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete Account</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
@@ -294,7 +296,7 @@
             $fileUpdateName = $row['filename'];
         }
     } else {
-        echo "<script type='text/javascript'>alert('Teacher Fetch: update push has failed');</script>";   
+        // echo "<script type='text/javascript'>alert('Teacher Fetch: update push has failed');</script>";   
     }
 ?>
 <!-- 
